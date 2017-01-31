@@ -1,0 +1,101 @@
+<section data-ng-controller="ProductsUpdateController as cuCtrl">
+
+  <div class="modal-header">
+    <h3 class="modal-title">Update: {{theProduct.firstName}} {{theProduct.surname}}</h3>
+  </div>
+  <div class="modal-body">
+
+    <form name="updateProductForm">
+      <fieldset>
+        <div class="row">
+          <div class="form-group">
+            <div data-ng-show="error" class="text-center text-danger">
+              <div class="alert alert-danger" role="alert">
+                <strong data-ng-bind="error"></strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 text-center">
+            <i class="glyphicon glyphicon-user cust-profile"
+               ng-class="{'text-primary': theProduct.referred, 'text-pink': !theProduct.referred}"></i>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="control-label" for="turbineModel">Turbine Model</label>
+              <div class="controls">
+                <input type="text" data-ng-model="theProduct.turbineModel" id="turbineModel" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="manufacturer">Manufacturer</label>
+              <div class="controls">
+                <input type="text" data-ng-model="theProduct.manufacturer" id="manufacturer" class="form-control" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="IECClass">IEC Class</label>
+              <div class="controls">
+                <input type="text" data-ng-model="theProduct.IECClass" id="IECClass" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="generatorType">Generator Type</label>
+              <div class="controls">
+                <input type="text" data-ng-model="theProduct.generatorType" id="generatorType" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-sm-push-6">
+            <div class="form-group">
+              <label class="control-label" for="driveType">Drive Type</label>
+              <div class="controls">
+                <input type="text" data-ng-model="theProduct.driveType" id="driveType" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="rotorSize">Rotor Size</label>
+              <div class="controls">
+                <input type="text" data-ng-model="theProduct.rotorSize" id="rotorSize" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-sm-pull-6 ">
+            <div class="form-group ">
+              <label class="control-label" for="referred">Referred</label>
+              <div class="controls">
+                <input type="checkbox" data-ng-model="theProduct.referred" id="referred" class="form-control checkbox-left">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="channel">Channel</label>
+              <div class="controls">
+                <select data-ng-model="theProduct.channel" id="channel" class="form-control"
+                        ng-options="channel.id as channel.opt for channel in channelOptions">
+                  <option value="">-- Select Channel --</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="control-label" for="industry">Industry</label>
+              <div class="controls">
+                <input type="text" data-ng-model="theProduct.industry" id="industry" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success btn-lg" ng-click="cuCtrl.update(theProduct);ok()" ng-disabled="updateProductForm.$invalid">Update & Close</button>
+    <button class="btn btn-warning btn-lg" ng-click="cancel()">Cancel</button>
+  </div>
+
+</section>
